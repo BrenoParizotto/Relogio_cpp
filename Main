@@ -1,0 +1,327 @@
+#include <iostream>
+#include <limits>
+
+using namespace std;
+
+class Relogio {
+    int minutos = 0;
+    int segundos = 0;
+    int horas = 0;
+    public:
+        void definirHorario();
+        void aumentarHora();
+        void aumentarMinuto();
+        void aumentarSegundo();
+        void diminuirHora();
+        void diminuirMinuto();
+        void diminuirSegundo();
+        void mostrarHora();
+};
+void Relogio::definirHorario(){ //feito
+
+    bool horaValida = false;
+        do{
+            int hora;
+            cout << "Digite a hora:" << endl;
+            cin >> hora;
+
+            if (hora > 23) {
+                cout << "Digite uma hora menor que 23." << endl;
+                cout << endl;
+            } else {
+                horas = hora;
+                horaValida = true;
+            }
+        } while (!horaValida);
+
+
+    bool minutoValido = false;
+
+    do{
+        int minuto;
+        cout << "Digite o minuto:" << endl;
+        cin >> minuto;
+
+        if (minuto > 59) {
+            cout << "Digite uma hora menor que 59." << endl;
+        } else {
+            minutos = minuto;
+            minutoValido = true;
+        }
+    } while (!minutoValido);
+
+
+    bool segundoValido = false;
+    do{
+        int segundo;
+        cout << "Digite o segundo:" << endl;
+        cin >> segundo;
+
+        if (segundo > 59) {
+            cout << "Digite uma hora menor que 59." << endl;
+        } else {
+            segundos = segundo;
+            segundoValido = true;
+        }
+    } while (!segundoValido);
+
+     cout << endl;
+     cout << "------- Horário definido para: " << horas << ":" << minutos << ":" << segundos << " -------        " <<endl;
+     cout << endl;
+}
+void Relogio::aumentarHora(){
+
+    bool HoraCorreta = false;
+
+   do {
+        int hora;
+        cout << "Digite quantas horas deseja aumentar:" << endl;
+        cin >> hora;
+    if ((hora + horas) > 23) {
+        cout << endl;
+        cout << "Digite uma hora que somada com a hora atual, seja menor que 23." << endl;
+        cout << endl;
+    } else if (hora > 23) {
+        cout << "Nao pode ser acrescentado hora maior que 23." << endl;
+        cout << endl;
+    } else {
+        horas = horas + hora;
+        HoraCorreta = true;
+    }
+
+   } while (!HoraCorreta);
+
+    cout << endl;
+    cout << "------- Hora aumentada para: " << horas << " -------        " << endl;
+    cout << endl;
+}
+void Relogio::aumentarMinuto(){
+
+    bool MinutoCorreto = false;
+
+   do{
+    int minuto;
+    cout << "Digite quantos minutos deseja aumentar:"<< endl;
+    cin >> minuto;
+    if ((minutos + minuto) > 59) {
+        cout << endl;
+        cout << "Digite um minuto que somado com o minuto atual, seja menor que 59." << endl;
+        cout << endl;
+    } else if (minuto > 59) {
+        cout << endl;
+        cout << "Não pode ser definido um minuto maior que 59." << endl;
+        cout << endl;
+    } else {
+        MinutoCorreto = true;
+        minutos = minuto + minutos;
+    }
+
+
+   }while (!MinutoCorreto);
+
+    cout << endl;
+    cout << "------- Minuto aumentada para: " << horas <<" -------        "<< endl;
+    cout << endl;
+}
+void Relogio::aumentarSegundo(){
+
+    bool segCorreto = false;
+
+   do{
+    int segundo;
+    cout << "Digite quantos minutos deseja aumentar:" << endl;
+    cin >> segundo;
+    if ((segundos + segundo) > 59) {
+        cout << endl;
+        cout << "Digite um segundo que somado com o segundo atual, seja menor que 59." << endl;
+        cout << endl;
+    } else if (segundo > 59) {
+        cout << endl;
+        cout << "Não pode ser definido um segundo maior que 59." << endl;
+        cout << endl;
+    } else {
+        segCorreto = true;
+        segundos = segundos + segundo;
+    }
+
+
+   }while (!segCorreto);
+
+    cout << endl;
+    cout << "------- Segundo aumentado para: " << horas <<" -------        "<<endl;
+    cout << endl;
+}
+void Relogio::diminuirHora(){
+
+    if (horas == 0) {
+        cout << "Nao se pode reduzir hroas pois esta zerada." << endl;
+        cout << endl;
+        return;
+    }
+
+  bool HoraCorreta = false;
+
+   do {
+        int hora;
+        cout << "Digite quantas horas deseja diminuir:" << endl;
+        cin >> hora;
+    if ((horas - hora) < 0) {
+        cout << endl;
+        cout << "Digite uma hora que reduzida com a hora atual, seja maior que 0." << endl;
+        cout << endl;
+    } else if (hora > 24) {
+        cout << endl;
+        cout << "Nao pode ser acrescentado hora maior que 24." << endl;
+        cout << endl;
+    } else {
+        horas = horas - hora;
+        HoraCorreta = true;
+    }
+
+   } while (!HoraCorreta);
+
+    cout << endl;
+    cout << "------- Hora reduzido para: " << horas <<" -------        "<<endl;
+    cout << endl;
+}
+void Relogio::diminuirMinuto(){
+
+    if (minutos == 0) {
+        cout << "Nao se pode reduzir minuto pois esta zerado." << endl;
+        cout << endl;
+        return;
+    }
+
+     bool minutoCorreto = false;
+
+   do {
+        int minuto;
+        cout << "Digite quantos minutos deseja diminuir:" << endl;
+        cin >> minuto;
+    if ((minutos - minuto) < 0) {
+        cout << endl;
+        cout << "Digite um minuto que reduzido com o minuto atual, seja maior que 0." << endl;
+        cout << endl;
+    } else if (minuto > 59) {
+        cout << endl;
+        cout << "Nao pode ser reduzido minuto maior que 59." << endl;
+        cout << endl;
+    } else {
+        minutos = minutos - minuto;
+        minutoCorreto = true;
+    }
+
+   } while (!minutoCorreto);
+
+    cout << endl;
+    cout << "------- Minuto reduzido para: " << minutos <<" -------        "<<endl;
+    cout << endl;
+}
+
+void Relogio::diminuirSegundo(){
+
+    if (segundos == 0) {
+        cout << "Nao pode reduzir nenhum segundo pois ele esta zerado." << endl;
+        cout << endl;
+        return;
+    };
+
+    bool segCorreto = false;
+
+   do {
+        int segundo;
+        cout << "Digite quantas segundos deseja diminuir:" << endl;
+        cin >> segundo;
+    if ((segundos - segundo) < 0) {
+        cout << endl;
+        cout << "Digite um segundo que reduzido com o segundo atual, seja maior que 0." << endl;
+        cout << endl;
+    } else if (segundo > 59) {
+        cout << endl;
+        cout << "Nao pode ser reduzido segundo maior que 59." << endl;
+        cout << endl;
+    } else {
+        segundos = segundos - segundo;
+        segCorreto = true;
+    }
+
+   } while (!segCorreto);
+
+    cout << endl;
+    cout << "------- Segundo reduzido para: " << segundos <<" -------        "<< endl;
+    cout << endl;
+}
+
+void Relogio::mostrarHora(){ // feito
+    cout << endl;
+    cout << "------- Horario atual: " << horas << ":" << minutos << ":" << segundos <<" -------        "<< endl;
+    cout << endl;
+}
+
+int main()
+{
+   Relogio r1;
+
+    int escolhaOpcao = 0;
+   cout << "------------------------------------------------------------" << endl;
+   cout << "--------------Bem vindo ao programa do relogio--------------" << endl;
+   cout << "------------------------------------------------------------" << endl;
+   cout << endl;
+
+do{
+   cout << "                Escolha a operacao que deseja:             " << endl;
+   cout << endl;
+   cout << endl;
+   cout << "1 - Definir hora, minuto e segundo." << endl;
+   cout << "2 - Aumentar hora." << endl;
+   cout << "3 - Aumentar minuto." << endl;
+   cout << "4 - Aumentar segundo." << endl;
+   cout << "5 - Diminuir hora." << endl;
+   cout << "6 - Diminuir minuto." << endl;
+   cout << "7 - Diminuir segundo." << endl;
+   cout << "8 - Mostrar horario atual." << endl;
+   cout << "9 - Sair do programa." << endl;
+   cout << endl;
+
+   cin >> escolhaOpcao;
+
+    switch (escolhaOpcao){
+
+   case 1:
+        r1.definirHorario();
+        break;
+   case 2:
+        r1.aumentarHora();
+        break;
+   case 3:
+        r1.aumentarMinuto();
+        break;
+   case 4:
+        r1.aumentarSegundo();
+        break;
+   case 5:
+        r1.diminuirHora();
+        break;
+   case 6:
+        r1.diminuirMinuto();
+        break;
+   case 7:
+        r1.diminuirSegundo();
+        break;
+   case 8:
+        r1.mostrarHora();
+        break;
+   case 9:
+        cout << endl;
+        cout << "Saindo do programa..." << endl;
+        break;
+   default:
+        cout << endl;
+        cout << "Digite uma opcao valida." << endl;
+        cout << endl;
+   }
+
+} while (escolhaOpcao != 9);
+
+    return 0;
+}
